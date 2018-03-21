@@ -34,9 +34,8 @@ public:
     /**
      * Close the file if it was open.
      *
-     * @return true if the file was already closed or the
-     * operation closed it. false if the file is still
-     * open after execution.
+     * @return true if the file was already closed or the operation closed it. false if the
+     * file is still open after execution.
      */
 	bool closeFile() {
 		if (f.is_open()) {
@@ -79,4 +78,32 @@ public:
 		closeFile();
 		return foundSentences;
 	}
+
+	/**
+     * This returns a Vector of Strings, where each String is a sentence in the
+     * Corpus that contains the specified words, with w2 being
+     * distance words away from w1.
+     *
+     * @param w1       The first word
+     * @param w2       The second word
+     * @param distance The distance between them. -5 to -1 and 1 to 5 are valid values.
+     * @return A Vector of Strings with one matched sentence per string.
+     */
+     vector<string> getSentencesWith(string w1, string w2, int distance) {
+     	vector<string> foundSentences;
+     	openFile();
+     	string record;
+     	while (getline(myfile, record)) {
+     		// Remove punctuation
+     		record.erase(remove_if(text.begin(), text.end(), ispunct), text.end());
+
+     		// Split string into words
+     		istringstream iss(record);
+     		vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
+     	
+     		// TODO: find w1 and check if it is the proper distance from w2
+     	}
+     	closeFile();
+     	return foundSentences;
+     }
 }
