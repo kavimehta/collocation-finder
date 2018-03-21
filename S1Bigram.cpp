@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/**
+ * A small class to hold a bigram and the results of Stage 1.
+ */
 class S1Bigram {
 public:
  
@@ -8,7 +11,7 @@ public:
     string wi;
     double strength;
     double spread;
-    std::vector<int> distances;
+    vector<int> distances;
 
     S1Bigram(string w_, string wi_, double strength_, double spread_, std::vector<int> distances_) {
         w = w_;
