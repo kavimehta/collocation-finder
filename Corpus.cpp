@@ -122,4 +122,51 @@ public:
      	closeFile();
      	return foundSentences;
      }
+
+     vector<string> getFrequentWords(int minFrequency) {
+          vector<string> freqWords;
+          // Create a map
+          map<string, int> m;
+
+          bool isStopWord = false;
+          vector<string> stopWords = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"}
+
+          openFile();
+          string record;
+          while (getline(myfile, record)) {
+               // Remove punctuation
+               record.erase(remove_if(text.begin(), text.end(), ispunct), text.end());
+
+               // Split string into words
+               istringstream iss(record);
+               vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
+               
+               for (int i = 0; i < words.size(); i++) {
+                    for (int j = 0; j < stopWords.size(); j++) {
+                         if (words[i] == words[j]) {
+                              isStopWord = true;
+                              break;
+                         }
+                    }
+
+                    if (!isStopWord) {
+                         m[words[i]]++;
+                    }
+
+                    isStopWord = false;
+               }
+
+               // Add frequent words to freqWords
+               map<sring, int>::iterator it;
+               for (it = m.begin(); it != m.end(); it++) {
+                    if (it->second >= minFrequency) {
+                         freqWords.push_back(it->first);
+                    }
+               }
+          }
+
+          closeFile();
+          return freqWords;
+
+     }
 }
