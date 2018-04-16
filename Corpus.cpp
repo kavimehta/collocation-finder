@@ -101,7 +101,23 @@ public:
      		istringstream iss(record);
      		vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
      	
-     		// TODO: find w1 and check if it is the proper distance from w2
+     		// Find w1 and check if it is the proper distance from w2
+               bool addS = false;
+               for (int i = 0; i < words.size(); i++) {
+                    if (words[i] == w1) {
+                         if (i + distance >=0 && i+distance < words.size()) {
+                              if (words[i+distance] == w2) {
+                                   addS = true;
+                                   break;
+                              }
+                         }
+                    }
+               }
+
+               // If found a match, add the sentence to the vector
+               if (addS) {
+                    foundSentences.push_back(record);
+               }
      	}
      	closeFile();
      	return foundSentences;
