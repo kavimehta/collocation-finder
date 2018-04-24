@@ -18,7 +18,7 @@ using namespace std;
  * @author Adam Goforth
  */
 
-public class JXtract {
+class JXtract {
 
     private:
         Corpus corpus;
