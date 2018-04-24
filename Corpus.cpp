@@ -157,7 +157,7 @@ public:
                }
 
                // Add frequent words to freqWords
-               map<sring, int>::iterator it;
+               map<string, int>::iterator it;
                for (it = m.begin(); it != m.end(); it++) {
                     if (it->second >= minFrequency) {
                          freqWords.push_back(it->first);
