@@ -33,16 +33,22 @@ class BigramCollection {
             int wIndex = 0;
 
             // Remove punctuation
-            s.erase(remove_if(text.begin(), text.end(), ispunct), text.end());
+            for (int i = 0, len = s.size(); i < len; i++) {
+                if (ispunct(s[i])) {
+                     s.erase(i--, 1);
+                     len = s.size();
+                }
+            }
 
             // Split string into words
-            istringstream iss(record);
-            vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
+            istringstream iss(s);
+            vector<string> words;
+            copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
 
             bool found = false;
             // Find w
             for (int i = 0; i < words.size(); i++) {
-                if (words[i] == w1) {
+                if (words[i] == w) {
                     wIndex = i;
                     found = true;
                 }
@@ -56,12 +62,12 @@ class BigramCollection {
                 }
 
                 bool isStopWord = false;
-                vector<string> stopWords = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"}
-
+                const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
+                vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
                 // Loop through the 10 surrounding words, but don't fall off the end
                 // of the array
-                for (int i = startIndex; (i < words.length) && (i <= wIndex + 5); i++) {
+                for (int i = startIndex; (i < words.size()) && (i <= wIndex + 5); i++) {
                     for (int j = 0; j < stopWords.size(); j++) {
                         if (words[i] == words[j]) {
                             isStopWord = true;
@@ -122,7 +128,7 @@ class BigramCollection {
          */
         string getTable2() {
             //TODO: complete me
-            return ""
+            return "";
         }
 
         /**
@@ -131,9 +137,9 @@ class BigramCollection {
          *
          * @return A string containing the table.
          */
-        public String getTable4() {
+        string getTable4() {
             //TODO: complete me
-            return ""
+            return "";
         }
 
         /**
@@ -219,7 +225,7 @@ class BigramCollection {
          * @param wi_ String of the potential collocate of w.
          * @return <code>true</code> if the bigram exists, <code>false</code> otherwise.
          */
-        bool containsBigram(String wi_) {
+        bool containsBigram(string wi_) {
             map<string, Bigram>::iterator it = bigrams.find(wi_);
             return it != bigrams.end();
         }
@@ -336,6 +342,6 @@ class BigramCollection {
                     return wi.compare(b.getwi());
                 }
 
-    	} // End class Bigram
+    	}; // End class Bigram
 
-} // End class BigramCollection
+}; // End class BigramCollection
