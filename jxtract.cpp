@@ -12,6 +12,7 @@
 // package jxtract;
 #include<bits/stdc++.h>
 using namespace std;
+#include "BigramCollection.h"
 
 
 /**
