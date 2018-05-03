@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 /**
@@ -10,7 +11,7 @@ class Corpus {
 public:
 
 	string filename;
-	ofstream file;
+	ifstream file;
 
 	/**
      * Constructor for the Corpus.
@@ -28,7 +29,7 @@ public:
      */
 	bool openFile() {
 		file.open(filename);
-		return not f.fail();
+		return not file.fail();
 	}
 
     /**
@@ -38,9 +39,9 @@ public:
      * file is still open after execution.
      */
 	bool closeFile() {
-		if (f.is_open()) {
-			f.close()
-			return not f.fail();
+		if (file.is_open()) {
+			file.close();
+			return not file.fail();
 		}
 		return true;
 	}
@@ -68,7 +69,7 @@ public:
 		vector<string> foundSentences;
 		openFile();
 		string record;
-		while (getline(myfile, record)) {
+		while (getline(file, record)) {
 			// Add spaces so record.find catches word at beginning or end
 			string tempRecord = " " + record + " ";
 			if (tempRecord.find(" " + word_ + " ")) {
@@ -93,13 +94,19 @@ public:
      	vector<string> foundSentences;
      	openFile();
      	string record;
-     	while (getline(myfile, record)) {
+     	while (getline(file, record)) {
      		// Remove punctuation
-     		record.erase(remove_if(text.begin(), text.end(), ispunct), text.end());
+     		for (int i = 0, len = record.size(); i < len; i++) {
+                    if (ispunct(record[i])) {
+                         record.erase(i--, 1);
+                         len = record.size();
+                    }
+               }
 
      		// Split string into words
      		istringstream iss(record);
-     		vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
+     		vector<string> words;
+               copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
      	
      		// Find w1 and check if it is the proper distance from w2
                bool addS = false;
@@ -129,18 +136,25 @@ public:
           map<string, int> m;
 
           bool isStopWord = false;
-          vector<string> stopWords = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"}
+          const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
+          vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
           openFile();
           string record;
-          while (getline(myfile, record)) {
+          while (getline(file, record)) {
                // Remove punctuation
-               record.erase(remove_if(text.begin(), text.end(), ispunct), text.end());
+               for (int i = 0, len = record.size(); i < len; i++) {
+                    if (ispunct(record[i])) {
+                         record.erase(i--, 1);
+                         len = record.size();
+                    }
+               }
 
                // Split string into words
                istringstream iss(record);
-               vector<string> words{istream_iterator<string>{iss}, istream_iterator<string>{}};
-               
+               vector<string> words;
+               copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
+
                for (int i = 0; i < words.size(); i++) {
                     for (int j = 0; j < stopWords.size(); j++) {
                          if (words[i] == words[j]) {
@@ -169,4 +183,4 @@ public:
           return freqWords;
 
      }
-}
+};
