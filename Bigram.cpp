@@ -34,10 +34,6 @@ int Bigram::getFreq() {
     return freq;
 }
 
-double Bigram::getStrength() {
-    return ((freq - getFbar()) / getSigma());
-}
-
 double Bigram::getSpread() {
     double u = 0;
     double ps;

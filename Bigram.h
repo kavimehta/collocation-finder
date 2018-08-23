@@ -9,7 +9,7 @@ class Bigram {
 		string wi;
 		string PP;
 		int freq;
-		vector<int> p(10);
+		vector<int> p;
 
     public:
         Bigram();

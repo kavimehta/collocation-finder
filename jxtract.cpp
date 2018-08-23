@@ -33,7 +33,7 @@ class JXtract {
          * showHelp
          * Prints the command line help for JXtract.
          */
-        static void showHelp() {
+        static void showHelpDialog() {
             cout << "JXtract: a collocation extractor";
             cout << "Usage: JXtract -source filename [-printfrequencies [-minfrequency frequency]] [-word word]";
             cout << "Example: JXtract -source ep-00-en.txt -word European";
@@ -72,12 +72,12 @@ class JXtract {
 
             //DEBUG cout << "w\twi\tstrength\t\tspread\tdistance";
             for (vector<S1Bigram>::iterator it = postStage1.begin(); it != postStage1.end(); ++it) {
-                for (int j = 0; j < *it.getDistances().size(); j++) {
+                for (int j = 0; j < *it->getDistances().size(); j++) {
                     //DEBUG cout << *it.getw() + "\t" + *it.getwi() + "\t" + *it.getStrength() + "\t" + *it.getSpread() + "\t" + *it.getDistances().get(j);
                     vector<string> stage2sentences = corpus.getSentencesWith(
-                            *it.getw(),
-                            *it.getwi(),
-                            *it.getDistances().get(j)
+                            *it->getw(),
+                            *it->getwi(),
+                            *it->getDistances()[j]
                     );
                     BigramCollection s2bigrams;
 
@@ -104,7 +104,7 @@ class JXtract {
          * printFrequentWords
          * Print frequent words in the corpus
          */
-        private void printFrequentWords(int freq) {
+        void printFrequentWords(int freq) {
             vector<string> words = corpus.getFrequentWords(freq);
             for (vector<string>::iterator it = words.begin(); it != words.end(); ++it) {
                 cout << *it;
@@ -130,34 +130,30 @@ class JXtract {
          */
         void parseProgArgs(int argc, char *argv[]) {
             for (int i = 1; i < argc; i++) {
-                switch (argv[i]) {
-                    case "-printfrequencies":
-                        getFrequencies = true;
-                        break;
-                    case "-minfrequency":
-                        minFrequency = Integer.parseInt(argv[i + 1]);
-                        break;
-                    case "-source":
-                        sourcefilename = argv[i + 1];
-                        break;
-                    case "-word":
-                        word = argv[i + 1];
-                        break;
-                    case "-h":
-                    case "-help":
-                    case "--help":
-                        showHelp = true;
-                        break;
+                if (std::string(argv[i]) == "-printfrequencies") {
+                    getFrequencies = true;
+                } else if (std::string(argv[i]) == "-minfrequency") {
+                    minFrequency = Integer.parseInt(argv[i + 1]);
+                } else if (std::string(argv[i]) == "-source") {
+                    sourcefilename = argv[i + 1];
+                } else if (std::string(argv[i]) == "-word") {
+                    word = argv[i + 1];
+                } else if (std::string(argv[i]) == "-h") {
+                    showHelp = true;
+                } else if (std::string(argv[i]) == "-help") {
+                    showHelp = true;
+                } else if (std::string(argv[i]) == "--help") {
+                    showHelp = true;
                 }
             }
 
             if (showHelp) {
-                showHelp();
+                showHelpDialog();
                 exit(0);
             }
 
             // Make sure source is given
-            if (!sourcefilename.compare("") == 0) {
+            if (!(sourcefilename.compare("") == 0)) {
                 corpus(sourcefilename);
 
                 // Either get word frequencies or find collocations
@@ -168,11 +164,11 @@ class JXtract {
                 }
 
             } else {
-                showHelp();
+                showHelpDialog();
                 exit(0);
             }
         }
-}
+};
 
 int main(int argc, char *argv[]) {
     JXtract xtractor;
