@@ -90,97 +90,97 @@ public:
      * @param distance The distance between them. -5 to -1 and 1 to 5 are valid values.
      * @return A Vector of Strings with one matched sentence per string.
      */
-     vector<string> getSentencesWith(string w1, string w2, int distance) {
-     	vector<string> foundSentences;
-     	openFile();
-     	string record;
-     	while (getline(file, record)) {
-     		// Remove punctuation
-     		for (int i = 0, len = record.size(); i < len; i++) {
+    vector<string> getSentencesWith(string w1, string w2, int distance) {
+        vector<string> foundSentences;
+        openFile();
+        string record;
+        while (getline(file, record)) {
+            // Remove punctuation
+            for (int i = 0, len = record.size(); i < len; i++) {
                     if (ispunct(record[i])) {
-                         record.erase(i--, 1);
-                         len = record.size();
+                            record.erase(i--, 1);
+                            len = record.size();
                     }
-               }
+                }
 
-     		// Split string into words
-     		istringstream iss(record);
-     		vector<string> words;
-               copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
-     	
-     		// Find w1 and check if it is the proper distance from w2
-               bool addS = false;
-               for (int i = 0; i < words.size(); i++) {
+            // Split string into words
+            istringstream iss(record);
+            vector<string> words;
+                copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
+        
+            // Find w1 and check if it is the proper distance from w2
+                bool addS = false;
+                for (int i = 0; i < words.size(); i++) {
                     if (words[i] == w1) {
-                         if (i + distance >=0 && i+distance < words.size()) {
-                              if (words[i+distance] == w2) {
-                                   addS = true;
-                                   break;
-                              }
-                         }
+                            if (i + distance >=0 && i+distance < words.size()) {
+                                if (words[i+distance] == w2) {
+                                    addS = true;
+                                    break;
+                                }
+                            }
                     }
-               }
+                }
 
-               // If found a match, add the sentence to the vector
-               if (addS) {
+                // If found a match, add the sentence to the vector
+                if (addS) {
                     foundSentences.push_back(record);
-               }
-     	}
-     	closeFile();
-     	return foundSentences;
-     }
+                }
+        }
+        closeFile();
+        return foundSentences;
+    }
 
-     vector<string> getFrequentWords(int minFrequency) {
-          vector<string> freqWords;
-          // Create a map
-          map<string, int> m;
+    vector<string> getFrequentWords(int minFrequency) {
+        vector<string> freqWords;
+        // Create a map
+        map<string, int> m;
 
-          bool isStopWord = false;
-          const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
-          vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
+        bool isStopWord = false;
+        const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
+        vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
-          openFile();
-          string record;
-          while (getline(file, record)) {
-               // Remove punctuation
-               for (int i = 0, len = record.size(); i < len; i++) {
-                    if (ispunct(record[i])) {
-                         record.erase(i--, 1);
-                         len = record.size();
-                    }
-               }
+        openFile();
+        string record;
+        while (getline(file, record)) {
+            // Remove punctuation
+            for (int i = 0, len = record.size(); i < len; i++) {
+                if (ispunct(record[i])) {
+                        record.erase(i--, 1);
+                        len = record.size();
+                }
+            }
 
-               // Split string into words
-               istringstream iss(record);
-               vector<string> words;
-               copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
+            // Split string into words
+            istringstream iss(record);
+            vector<string> words;
+            copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
 
-               for (int i = 0; i < words.size(); i++) {
-                    for (int j = 0; j < stopWords.size(); j++) {
-                         if (words[i] == words[j]) {
-                              isStopWord = true;
-                              break;
-                         }
-                    }
+            for (int i = 0; i < words.size(); i++) {
+                for (int j = 0; j < stopWords.size(); j++) {
+                        if (words[i] == words[j]) {
+                            isStopWord = true;
+                            break;
+                        }
+                }
 
-                    if (!isStopWord) {
-                         m[words[i]]++;
-                    }
+                if (!isStopWord) {
+                        m[words[i]]++;
+                }
 
-                    isStopWord = false;
-               }
+                isStopWord = false;
+            }
 
-               // Add frequent words to freqWords
-               map<string, int>::iterator it;
-               for (it = m.begin(); it != m.end(); it++) {
-                    if (it->second >= minFrequency) {
-                         freqWords.push_back(it->first);
-                    }
-               }
-          }
+            // Add frequent words to freqWords
+            map<string, int>::iterator it;
+            for (it = m.begin(); it != m.end(); it++) {
+                if (it->second >= minFrequency) {
+                        freqWords.push_back(it->first);
+                }
+            }
+        }
 
-          closeFile();
-          return freqWords;
+        closeFile();
+        return freqWords;
 
-     }
+    }
 };

@@ -13,6 +13,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #include "BigramCollection.h"
+#include "Corpus.h"
 
 
 /**
@@ -121,6 +122,7 @@ class JXtract {
             showHelp = false;
             sourcefilename = "";
             word = "";
+            corpus = NULL;
         }
 
         /**
@@ -154,7 +156,7 @@ class JXtract {
 
             // Make sure source is given
             if (!(sourcefilename.compare("") == 0)) {
-                corpus(sourcefilename);
+                corpus = Corpus(sourcefilename);
 
                 // Either get word frequencies or find collocations
                 if (getFrequencies) {
