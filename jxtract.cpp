@@ -52,7 +52,7 @@ class JXtract {
             } catch (exception& e) {
                 cout << e.what();
             }
-            //cout << "\n" + bigrams.getTable4();
+
             vector<S1Bigram*> postStage1 = bigrams.getStageOneBigrams(1, 1, 10);
 
             //DEBUG cout << "w\twi\tstrength\t\tspread\tdistance";
@@ -64,7 +64,7 @@ class JXtract {
                             (*it)->getwi(),
                             (*it)->getDistances()[j]
                     );
-                    BigramCollection s2bigrams;
+                    BigramCollection s2bigrams = BigramCollection();
 
                     // Add all sentences with this bigram to a collection
                     try {
@@ -157,6 +157,6 @@ class JXtract {
 };
 
 int main(int argc, char *argv[]) {
-    JXtract xtractor;
+    JXtract xtractor = JXtract();
     xtractor.parseProgArgs(argc, argv);
 }
