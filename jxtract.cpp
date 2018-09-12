@@ -58,7 +58,7 @@ class JXtract {
             transform(w.begin(), w.end(), w.begin(), ::tolower);
             vector<string> foundSentences = corpus.getSentencesWith(w);
 
-            BigramCollection bigrams;
+            BigramCollection bigrams = BigramCollection();
             try {
                 for (vector<string>::iterator it = foundSentences.begin(); it != foundSentences.end(); ++it) {
                     //cout << "Found sentence: " + foundSentences.get(i);
@@ -69,16 +69,16 @@ class JXtract {
                 cout << e.what();
             }
             //cout << "\n" + bigrams.getTable4();
-            vector<S1Bigram> postStage1 = bigrams.getStageOneBigrams(1, 1, 10);
+            vector<S1Bigram*> postStage1 = bigrams.getStageOneBigrams(1, 1, 10);
 
             //DEBUG cout << "w\twi\tstrength\t\tspread\tdistance";
-            for (vector<S1Bigram>::iterator it = postStage1.begin(); it != postStage1.end(); ++it) {
-                for (int j = 0; j < *it->getDistances().size(); j++) {
+            for (vector<S1Bigram*>::iterator it = postStage1.begin(); it != postStage1.end(); ++it) {
+                for (int j = 0; j < (*it)->getDistances().size(); j++) {
                     //DEBUG cout << *it.getw() + "\t" + *it.getwi() + "\t" + *it.getStrength() + "\t" + *it.getSpread() + "\t" + *it.getDistances().get(j);
                     vector<string> stage2sentences = corpus.getSentencesWith(
-                            *it->getw(),
-                            *it->getwi(),
-                            *it->getDistances()[j]
+                            (*it)->getw(),
+                            (*it)->getwi(),
+                            (*it)->getDistances()[j]
                     );
                     BigramCollection s2bigrams;
 
