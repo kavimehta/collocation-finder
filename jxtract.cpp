@@ -101,12 +101,12 @@ class JXtract {
          * Constructor
          */
         JXtract() {
+            // Corpus is initialized when args are parsed
             getFrequencies = false;
             minFrequency = 1000;
             showHelp = false;
             sourcefilename = "";
             word = "";
-            corpus = Corpus();
         }
 
         /**

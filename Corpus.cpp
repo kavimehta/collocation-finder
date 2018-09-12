@@ -12,12 +12,6 @@ public:
 
 	string filename;
 	ifstream file;
-
-    /**
-     * Empty constructer for initilization in jxtract.
-     */
-	Corpus() {
-    }
     
     /**
      * Constructor for the Corpus.
@@ -26,6 +20,7 @@ public:
      */
 	Corpus(string filename_) {
 		filename = filename_;
+        file = ifstream();
 	}
 
 	/**
