@@ -122,7 +122,7 @@ class JXtract {
             showHelp = false;
             sourcefilename = "";
             word = "";
-            corpus = NULL;
+            corpus = Corpus();
         }
 
         /**
@@ -135,7 +135,7 @@ class JXtract {
                 if (std::string(argv[i]) == "-printfrequencies") {
                     getFrequencies = true;
                 } else if (std::string(argv[i]) == "-minfrequency") {
-                    minFrequency = Integer.parseInt(argv[i + 1]);
+                    minFrequency = std::stoi(argv[i + 1]);
                 } else if (std::string(argv[i]) == "-source") {
                     sourcefilename = argv[i + 1];
                 } else if (std::string(argv[i]) == "-word") {

@@ -7,6 +7,7 @@ class Corpus {
     public:
         string filename;
         ifstream file;
+        Corpus();
         Corpus(string filename_);
         bool openFile();
         bool closeFile();

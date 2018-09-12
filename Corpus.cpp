@@ -13,7 +13,13 @@ public:
 	string filename;
 	ifstream file;
 
-	/**
+    /**
+     * Empty constructer for initilization in jxtract.
+     */
+	Corpus() {
+    }
+    
+    /**
      * Constructor for the Corpus.
      *
      * @param filename_ The text file that contains the corpus.
