@@ -73,7 +73,7 @@ void BigramCollection::addSentence(string w, string s, bool includeClosedClass) 
             }
             if(!(words[i] == w) && (includeClosedClass || !isStopWord)) {
                 if (!containsBigram(words[i])) {
-                    bigrams.insert(pair<string, Bigram>(w, new Bigram(w, words[i])));
+                    bigrams.insert(pair<string, Bigram>(w, *(new Bigram(w, words[i]))));
                 }
                 bigrams[words[i]].addInstance(i - wIndex);
             }

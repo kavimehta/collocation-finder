@@ -57,13 +57,13 @@ vector<int> Bigram::getDistances(double k1) {
     // relative positions
     for (int i = 0; i < 5; i++) {
         if (p[i] > minPeak) {
-            distances.add(i - 5);
+            distances.push_back(i - 5);
         }
     }
 
     for (int i = 5; i < 10; i++) {
         if (p[i] > minPeak) {
-            distances.add(i - 4);
+            distances.push_back(i - 4);
         }
     }
 
@@ -85,7 +85,7 @@ int Bigram::getp(int offset) {
 
 void Bigram::addInstance(int offset) {
     if ((offset < -5) || (offset > 5) || (offset == 0)) {
-        throw exception("Cannot add instance: offset out of bounds");
+        throw std::invalid_argument("Cannot add instance: offset out of bounds");
     } else {
         if (offset < 0) {
             offset += 5;
@@ -94,7 +94,6 @@ void Bigram::addInstance(int offset) {
         }
         p[offset]++;
         freq++;
-        wFreq++;
     }
 }
 
