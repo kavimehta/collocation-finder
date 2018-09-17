@@ -159,6 +159,8 @@ vector<S1Bigram*> BigramCollection::getStageOneBigrams(double k0, double k1, dou
             passedStage.push_back(new S1Bigram(tempBG.getw(), tempBG.getwi(), tempBG.getStrength(), tempBG.getSpread(), distances));
         }
     }
+
+    return passedStage;
 }
 
 void BigramCollection::stage2(double T) {

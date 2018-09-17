@@ -8,10 +8,13 @@ using namespace std;
  * This class represents the text file that makes up a corpus.
  */
 class Corpus {
+
+private:
+    ifstream file;
+
 public:
 
 	string filename;
-	ifstream file;
     
     /**
      * Constructor for the Corpus.
@@ -20,43 +23,25 @@ public:
      */
 	Corpus(string filename_) {
 		filename = filename_;
-        file = ifstream();
-	}
-
-	/**
-     * Open the file for reading.
-     *
-     * @return true if the open succeeded, false if the open failed.
-     */
-	bool openFile() {
-		file.open(filename);
-		return not file.fail();
-	}
-
-    /**
-     * Close the file if it was open.
-     *
-     * @return true if the file was already closed or the operation closed it. false if the
-     * file is still open after execution.
-     */
-	bool closeFile() {
-		if (file.is_open()) {
-			file.close();
-			return not file.fail();
-		}
-		return true;
 	}
 
     /**
      * Count all the lines in the corpus and print to cout.
      */
 	void countLines() {
+        //Open the file
+        ifstream file;
+		file.open(filename);
+
 		int count = 0;
 		string line;
 		while (getline(file, line)) {
 			count++;
 		}
 		cout << "Lines: " << count;
+
+        //Close the file
+        file.close();
 	}
 
     /**
@@ -67,8 +52,11 @@ public:
      * @return The Vector of Strings with the sentences.
      */
 	vector<string> getSentencesWith(string word_) {
+        //Open the file
+        ifstream file;
+		file.open(filename);
+
 		vector<string> foundSentences;
-		openFile();
 		string record;
 		while (getline(file, record)) {
 			// Add spaces so record.find catches word at beginning or end
@@ -77,7 +65,10 @@ public:
 				foundSentences.push_back(record);
 			}
 		}
-		closeFile();
+		
+        //Close the file
+        file.close();
+
 		return foundSentences;
 	}
 
@@ -92,8 +83,11 @@ public:
      * @return A Vector of Strings with one matched sentence per string.
      */
     vector<string> getSentencesWith(string w1, string w2, int distance) {
+        //Open the file
+        ifstream file;
+		file.open(filename);
+
         vector<string> foundSentences;
-        openFile();
         string record;
         while (getline(file, record)) {
             // Remove punctuation
@@ -127,11 +121,18 @@ public:
                     foundSentences.push_back(record);
                 }
         }
-        closeFile();
+        
+        //Close the file
+        file.close();
+
         return foundSentences;
     }
 
     vector<string> getFrequentWords(int minFrequency) {
+        //Open the file
+        ifstream file;
+		file.open(filename);
+
         vector<string> freqWords;
         // Create a map
         map<string, int> m;
@@ -140,7 +141,6 @@ public:
         const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
         vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
-        openFile();
         string record;
         while (getline(file, record)) {
             // Remove punctuation
@@ -180,7 +180,9 @@ public:
             }
         }
 
-        closeFile();
+        //Close the file
+        file.close();
+
         return freqWords;
 
     }
