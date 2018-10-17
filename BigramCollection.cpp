@@ -154,13 +154,17 @@ vector<S1Bigram*> BigramCollection::getStageOneBigrams(double k0, double k1, dou
     for (it = bigrams.begin(); it != bigrams.end(); it++) {
         tempBG = it->second;
 
-        if (tempBG.getStrength() >= k0 && tempBG.getSpread() >= U0) {
+        if (getStrength(tempBG) >= k0 && tempBG.getSpread() >= U0) {
             vector<int> distances = tempBG.getDistances(k1);
-            passedStage.push_back(new S1Bigram(tempBG.getw(), tempBG.getwi(), tempBG.getStrength(), tempBG.getSpread(), distances));
+            passedStage.push_back(new S1Bigram(tempBG.getw(), tempBG.getwi(), getStrength(tempBG), tempBG.getSpread(), distances));
         }
     }
 
     return passedStage;
+}
+
+double BigramCollection::getStrength(Bigram b) {
+    return ((b.getFreq() - getFbar()) / getSigma());
 }
 
 void BigramCollection::stage2(double T) {

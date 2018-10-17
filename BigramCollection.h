@@ -19,6 +19,7 @@ class BigramCollection {
         void addSentence(string w, string s, bool includeClosedClass);
         double getFbar();
         double getSigma();
+        double getStrength(Bigram b);
         string getTable2();
         string getTable4();
         vector<S1Bigram*> getStageOneBigrams(double k0, double k1, double U0);
