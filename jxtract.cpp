@@ -19,17 +19,17 @@ class JXtract {
          * Prints the command line help for JXtract.
          */
         static void showHelpDialog() {
-            cout << "JXtract: a collocation extractor";
-            cout << "Usage: JXtract -source filename [-printfrequencies [-minfrequency frequency]] [-word word]";
-            cout << "Example: JXtract -source ep-00-en.txt -word European";
-            cout << "";
-            cout << "Arguments:";
-            cout << "-source\t\t\tThe corpus file.  Must be English language.";
-            cout << "-word\t\t\tThe word that will be used to search for collocations";
-            cout << "-printfrequencies\t(Optional) An alternate mode to finding collocations.  JXtract can also be used to";
-            cout << "\t\t\tfind the most frequent words in a file";
-            cout << "-minfrequency\t\t(Optional)If JXtract is used to get word frequencies, this determines the lower";
-            cout << "\t\t\tfrequency threshold, below which less frequently appearing words will not be reported";
+            cout << "JXtract: a collocation extractor\n";
+            cout << "Usage: JXtract -source filename [-printfrequencies [-minfrequency frequency]] [-word word]\n";
+            cout << "Example: JXtract -source ep-00-en.txt -word European\n";
+            cout << "\n";
+            cout << "Arguments:\n";
+            cout << "-source\t\t\tThe corpus file.  Must be English language.\n";
+            cout << "-word\t\t\tThe word that will be used to search for collocations\n";
+            cout << "-printfrequencies\t(Optional) An alternate mode to finding collocations.  JXtract can also be used to\n";
+            cout << "\t\t\tfind the most frequent words in a file\n";
+            cout << "-minfrequency\t\t(Optional)If JXtract is used to get word frequencies, this determines the lower\n";
+            cout << "\t\t\tfrequency threshold, below which less frequently appearing words will not be reported\n";
         }
 
         /**
