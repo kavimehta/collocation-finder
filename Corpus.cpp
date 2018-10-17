@@ -8,6 +8,11 @@ using namespace std;
 /**
  * This class represents the text file that makes up a corpus.
  */
+
+/**
+ * Default constructor.
+ */
+Corpus::Corpus() {}
     
 /**
  * Constructor for the Corpus.
