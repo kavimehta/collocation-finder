@@ -56,7 +56,7 @@ vector<string> Corpus::getSentencesWith(string word_) {
 
     vector<string> foundSentences;
     string record;
-    while (getline(file, record)) {
+    while (getline(file, record, '.')) {
         // Add spaces so record.find catches word at beginning or end
         string tempRecord = " " + record + " ";
         if (tempRecord.find(" " + word_ + " ")) {

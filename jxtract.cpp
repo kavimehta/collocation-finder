@@ -38,14 +38,14 @@ class JXtract {
          * returns the labelled collocations for that word.
          */
         void getCollocations(string w) {
-            cout << "Finding collocations containing the word " + w;
+            cout << "Finding collocations containing the word " + w + "\n";
             transform(w.begin(), w.end(), w.begin(), ::tolower);
             vector<string> foundSentences = corpus.getSentencesWith(w);
 
             BigramCollection bigrams = BigramCollection();
             try {
                 for (vector<string>::iterator it = foundSentences.begin(); it != foundSentences.end(); ++it) {
-                    //cout << "Found sentence: " + foundSentences.get(i);
+                    //cout << "Found sentence: " + (*it) + "\n";
                     bigrams.addSentence(w, *it, false);
                 }
 
