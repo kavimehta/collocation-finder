@@ -9,6 +9,8 @@ Bigram::Bigram() {
     wi = "";
     freq = 0;
     PP = "";
+    vector<int> temp(10);
+    p = temp;
 }
 
 Bigram::Bigram(string w_, string wi_) {
