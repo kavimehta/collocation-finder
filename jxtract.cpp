@@ -92,7 +92,7 @@ class JXtract {
         void printFrequentWords(int freq) {
             vector<string> words = corpus.getFrequentWords(freq);
             for (vector<string>::iterator it = words.begin(); it != words.end(); ++it) {
-                cout << *it;
+                cout << *it + "\n";
             }
         }
 
@@ -103,7 +103,7 @@ class JXtract {
         JXtract() {
             // Corpus is initialized when args are parsed
             getFrequencies = false;
-            minFrequency = 1000;
+            minFrequency = 100;
             showHelp = false;
             sourcefilename = "";
             word = "";

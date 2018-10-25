@@ -135,8 +135,7 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
     // Create a map
     map<string, int> m;
 
-    bool isStopWord = false;
-    const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
+    const char* args[] = {"was", "am", "has", "the", "The", "said", "Mr", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
     vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
     string record;
@@ -155,26 +154,23 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
         copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
 
         for (int i = 0; i < words.size(); i++) {
-            for (int j = 0; j < stopWords.size(); j++) {
-                    if (words[i] == words[j]) {
-                        isStopWord = true;
-                        break;
-                    }
-            }
-
-            if (!isStopWord) {
+            if (std::find(stopWords.begin(), stopWords.end(), words[i]) == stopWords.end()) {
+                map<string,int>::iterator it = m.find(words[i]);
+                if (it != m.end()) {
                     m[words[i]]++;
+                } else {
+                    m[words[i]] = 1;
+                }
+                
             }
-
-            isStopWord = false;
         }
+    }
 
-        // Add frequent words to freqWords
-        map<string, int>::iterator it;
-        for (it = m.begin(); it != m.end(); it++) {
-            if (it->second >= minFrequency) {
-                    freqWords.push_back(it->first);
-            }
+    // Add frequent words to freqWords
+    map<string, int>::iterator it;
+    for (it = m.begin(); it != m.end(); it++) {
+        if (it->second >= minFrequency) {
+            freqWords.push_back(it->first);
         }
     }
 
