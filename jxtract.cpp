@@ -46,7 +46,7 @@ class JXtract {
             try {
                 for (vector<string>::iterator it = foundSentences.begin(); it != foundSentences.end(); ++it) {
                     //cout << "Found sentence: " + (*it) + "\n";
-                    bigrams.addSentence(w, *it, false);
+                    bigrams.addSentence(w, (*it), false);
                 }
 
             } catch (exception& e) {

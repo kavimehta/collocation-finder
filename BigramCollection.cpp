@@ -58,26 +58,20 @@ void BigramCollection::addSentence(string w, string s, bool includeClosedClass) 
             startIndex = 0;
         }
 
-        bool isStopWord = false;
         const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
         vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
 
         // Loop through the 10 surrounding words, but don't fall off the end
         // of the array
         for (int i = startIndex; (i < words.size()) && (i <= wIndex + 5); i++) {
-            for (int j = 0; j < stopWords.size(); j++) {
-                if (words[i] == words[j]) {
-                    isStopWord = true;
-                    break;
+            if (includeClosedClass || std::find(stopWords.begin(), stopWords.end(), words[i]) == stopWords.end()) {
+                if(!(words[i] == w)) {
+                    if (!containsBigram(words[i])) {
+                        bigrams[words[i]] = *(new Bigram(w, words[i])); //TO DO: delete bigrams after use
+                    }
+                    bigrams[words[i]].addInstance(i - wIndex);
                 }
             }
-            if(!(words[i] == w) && (includeClosedClass || !isStopWord)) {
-                if (!containsBigram(words[i])) {
-                    bigrams.insert(pair<string, Bigram>(w, *(new Bigram(w, words[i]))));
-                }
-                bigrams[words[i]].addInstance(i - wIndex);
-            }
-            isStopWord = false;
         }
     }
 }
@@ -115,28 +109,6 @@ double BigramCollection::getSigma() {
     // This should be the standard deviation. Implementation of a formula
     // from Wikipedia
     return sqrt(term1 * term2);
-}
-
-/**
- * Gets a string representing the contents of the BigramCollection similar
- * to the format presented in Table 2 of the Smadja paper.
- *
- * @return The String containing the table-format contents of the bigrams.
- */
-string BigramCollection::getTable2() {
-    //TODO: complete me
-    return "";
-}
-
-/**
- * Present the results of Step 1.3 in the Smadja algorithm. This is similar
- * to Table 4 in the paper.
- *
- * @return A string containing the table.
- */
-string BigramCollection::getTable4() {
-    //TODO: complete me
-    return "";
 }
 
 /**
