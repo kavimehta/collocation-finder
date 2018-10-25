@@ -59,7 +59,7 @@ vector<string> Corpus::getSentencesWith(string word_) {
     while (getline(file, record, '.')) {
         // Add spaces so record.find catches word at beginning or end
         string tempRecord = " " + record + " ";
-        if (tempRecord.find(" " + word_ + " ")) {
+        if (tempRecord.find(" " + word_ + " ") != std::string::npos) {
             foundSentences.push_back(record);
         }
     }
