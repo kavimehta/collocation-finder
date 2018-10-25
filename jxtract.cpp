@@ -50,15 +50,16 @@ class JXtract {
                 }
 
             } catch (exception& e) {
+                cout << "Exception\n";
                 cout << e.what();
             }
 
-            vector<S1Bigram*> postStage1 = bigrams.getStageOneBigrams(1, 1, 10);
+            vector<S1Bigram*> postStage1 = bigrams.getStageOneBigrams(0, 1, 0); // originally 1,1,10
 
-            //DEBUG cout << "w\twi\tstrength\t\tspread\tdistance";
             for (vector<S1Bigram*>::iterator it = postStage1.begin(); it != postStage1.end(); ++it) {
                 for (int j = 0; j < (*it)->getDistances().size(); j++) {
-                    //DEBUG cout << *it.getw() + "\t" + *it.getwi() + "\t" + *it.getStrength() + "\t" + *it.getSpread() + "\t" + *it.getDistances().get(j);
+                    //cout << (*it)->getw() + "\t" + (*it)->getwi() + "\t";
+                    //cout << (*it)->getStrength() + "\t" + (*it)->getSpread() + "\t" + (*it)->getDistances()[j];
                     vector<string> stage2sentences = corpus.getSentencesWith(
                             (*it)->getw(),
                             (*it)->getwi(),
@@ -69,14 +70,13 @@ class JXtract {
                     // Add all sentences with this bigram to a collection
                     try {
                         for (string stage2sentence : stage2sentences) {
-                            //cout << "Found sentence: " + stage2sentences.get(k);
+                            //cout << "Found sentence: " + stage2sentence;
                             s2bigrams.addSentence(w, stage2sentence, true);
                         }
                     } catch (exception& e) {
                         cout << e.what();
                     }
-                    //cout << "\n" + s2bigrams.getTable2();
-                    //cout << "^-- " + *it.getw() + " " + *it.getwi();
+                    //cout << "^-- " + (*it)->getw() + " " + (*it)->getwi();
                     s2bigrams.stage2(0.75);
                     //cout << " ";
                 }

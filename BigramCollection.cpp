@@ -67,9 +67,11 @@ void BigramCollection::addSentence(string w, string s, bool includeClosedClass) 
             if (includeClosedClass || std::find(stopWords.begin(), stopWords.end(), words[i]) == stopWords.end()) {
                 if(!(words[i] == w)) {
                     if (!containsBigram(words[i])) {
+                        //cout << "Found Bigram with " + words[i] + "\n";
                         bigrams[words[i]] = *(new Bigram(w, words[i])); //TO DO: delete bigrams after use
                     }
                     bigrams[words[i]].addInstance(i - wIndex);
+                    wFreq++;
                 }
             }
         }
@@ -103,7 +105,7 @@ double BigramCollection::getSigma() {
     map<string, Bigram>::iterator it;
     for (it = bigrams.begin(); it != bigrams.end(); it++) {
          x = (it->second).getFreq() - fbar;
-         term2 += x * x;
+         term2 += (x * x);
     }
 
     // This should be the standard deviation. Implementation of a formula
@@ -126,8 +128,13 @@ vector<S1Bigram*> BigramCollection::getStageOneBigrams(double k0, double k1, dou
     for (it = bigrams.begin(); it != bigrams.end(); it++) {
         tempBG = it->second;
 
+        //cout << it->first << "\n";
+        //cout << "Bigram strength: " << getStrength(tempBG) << "\n";
+        //cout << "Bigram spread: " << tempBG.getSpread() << "\n\n";
+
         if (getStrength(tempBG) >= k0 && tempBG.getSpread() >= U0) {
             vector<int> distances = tempBG.getDistances(k1);
+            //cout << "Found S1Bigram\n";
             passedStage.push_back(new S1Bigram(tempBG.getw(), tempBG.getwi(), getStrength(tempBG), tempBG.getSpread(), distances));
         }
     }
