@@ -22,7 +22,7 @@ class BigramCollection {
         double getStrength(Bigram b);
         string getTable2();
         string getTable4();
-        vector<S1Bigram*> getStageOneBigrams(double k0, double k1, double U0);
+        vector<S1Bigram> getStageOneBigrams(double k0, double k1, double U0);
         void stage2(double T);
         bool containsBigram(string wi_);
         void clearBigrams();

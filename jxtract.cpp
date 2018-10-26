@@ -54,16 +54,16 @@ class JXtract {
                 cout << e.what();
             }
 
-            vector<S1Bigram*> postStage1 = bigrams.getStageOneBigrams(0, 1, 0); // originally 1,1,10
+            vector<S1Bigram> postStage1 = bigrams.getStageOneBigrams(0, 1, 0); // originally 1,1,10
 
-            for (vector<S1Bigram*>::iterator it = postStage1.begin(); it != postStage1.end(); ++it) {
-                for (int j = 0; j < (*it)->getDistances().size(); j++) {
-                    //cout << (*it)->getw() + "\t" + (*it)->getwi() + "\t";
-                    //cout << (*it)->getStrength() + "\t" + (*it)->getSpread() + "\t" + (*it)->getDistances()[j];
+            for (S1Bigram s1bigram : postStage1) {
+                for (int j = 0; j < s1bigram.getDistances().size(); j++) {
+                    //cout << s1bigram.getw() + "\t" + s1bigram.getwi() + "\t";
+                    //cout << s1bigram.getStrength() << "\t" << s1bigram.getSpread() << "\t" << s1bigram.getDistances()[j];
                     vector<string> stage2sentences = corpus.getSentencesWith(
-                            (*it)->getw(),
-                            (*it)->getwi(),
-                            (*it)->getDistances()[j]
+                            s1bigram.getw(),
+                            s1bigram.getwi(),
+                            s1bigram.getDistances()[j]
                     );
                     BigramCollection s2bigrams = BigramCollection();
 

@@ -119,8 +119,8 @@ double BigramCollection::getSigma() {
  *
  * @return A Vector containing all of the S1Bigrams
  */
-vector<S1Bigram*> BigramCollection::getStageOneBigrams(double k0, double k1, double U0) {
-    vector<S1Bigram*> passedStage;
+vector<S1Bigram> BigramCollection::getStageOneBigrams(double k0, double k1, double U0) {
+    vector<S1Bigram> passedStage;
     Bigram tempBG;
 
     //Iterating over all the bigrams
@@ -135,7 +135,7 @@ vector<S1Bigram*> BigramCollection::getStageOneBigrams(double k0, double k1, dou
         if (getStrength(tempBG) >= k0 && tempBG.getSpread() >= U0) {
             vector<int> distances = tempBG.getDistances(k1);
             //cout << "Found S1Bigram\n";
-            passedStage.push_back(new S1Bigram(tempBG.getw(), tempBG.getwi(), getStrength(tempBG), tempBG.getSpread(), distances));
+            passedStage.push_back(*(new S1Bigram(tempBG.getw(), tempBG.getwi(), getStrength(tempBG), tempBG.getSpread(), distances)));
         }
     }
 
