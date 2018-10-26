@@ -171,6 +171,7 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
     for (it = m.begin(); it != m.end(); it++) {
         if (it->second >= minFrequency) {
             freqWords.push_back(it->first);
+            cout << it->first << " " << it->second << "\n";
         }
     }
 

@@ -50,7 +50,6 @@ class JXtract {
                 }
 
             } catch (exception& e) {
-                cout << "Exception\n";
                 cout << e.what();
             }
 
@@ -92,7 +91,8 @@ class JXtract {
         void printFrequentWords(int freq) {
             vector<string> words = corpus.getFrequentWords(freq);
             for (vector<string>::iterator it = words.begin(); it != words.end(); ++it) {
-                cout << *it + "\n";
+                // Moved printing to corpus.cpp
+                //cout << *it + "\n";
             }
         }
 
