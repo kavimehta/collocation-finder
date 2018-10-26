@@ -75,9 +75,7 @@ class JXtract {
                     } catch (exception& e) {
                         cout << e.what();
                     }
-                    //cout << "^-- " + (*it)->getw() + " " + (*it)->getwi();
                     s2bigrams.stage2(0.75);
-                    //cout << " ";
                 }
 
             }
