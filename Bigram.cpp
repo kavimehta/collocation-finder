@@ -9,7 +9,7 @@ Bigram::Bigram() {
     wi = "";
     freq = 0;
     PP = "";
-    vector<int> temp(10);
+    vector<int> temp(10, 0);
     p = temp;
 }
 
@@ -18,6 +18,8 @@ Bigram::Bigram(string w_, string wi_) {
     wi = wi_;
     freq = 0;
     PP = "";
+    vector<int> temp(10, 0);
+    p = temp;
 }
 
 string Bigram::getwi() {

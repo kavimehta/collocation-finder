@@ -198,7 +198,7 @@ void BigramCollection::stage2(double T) {
         cout << aNgram;
         cout << " ";
     }
-    cout << "";
+    cout << "\n";
 }
 
 /**
