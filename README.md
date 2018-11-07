@@ -14,7 +14,7 @@ For printing the frequencies of words in a text
 ./a.out -source [filename.txt] -printfrequencies -minfrequency [minimum word frequency to be printed, default: 500]
 ```
 
-For print the collocations of a given word in a text
+For printing the collocations of a given word in a text
 ```
 ./a.out -source [filename.txt] -word [word to find collocations for]
 ```
