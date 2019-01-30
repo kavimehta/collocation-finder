@@ -4,17 +4,19 @@ This is a C++ implementation of the collocation extraction algorithm described i
 
 To compile, run:
 ```
-g++ -std=c++11 *.cpp
+cd build
+cmake ..
+make
 ```
 
 To run, use the following:
 
 For printing the frequencies of words in a text
 ```
-./a.out -source [filename.txt] -printfrequencies -minfrequency [minimum word frequency to be printed, default: 500]
+./xtract -source [filename.txt] -printfrequencies -minfrequency [minimum word frequency to be printed, default: 500]
 ```
 
 For printing the collocations of a given word in a text
 ```
-./a.out -source [filename.txt] -word [word to find collocations for]
+./xtract -source [filename.txt] -word [word to find collocations for]
 ```
