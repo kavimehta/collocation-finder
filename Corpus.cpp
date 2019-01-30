@@ -135,8 +135,12 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
     // Create a map
     map<string, int> m;
 
-    const char* args[] = {"was", "am", "has", "the", "The", "said", "Mr", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
-    vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
+    ifstream stopWordsFile("stopWordsList.txt");
+    vector<string> stopWords;
+    string word;
+    while (stopWordsFile >> word) {
+        stopWords.push_back(word);
+    }
 
     string record;
     while (getline(file, record)) {
@@ -154,7 +158,9 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
         copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(words));
 
         for (int i = 0; i < words.size(); i++) {
-            if (std::find(stopWords.begin(), stopWords.end(), words[i]) == stopWords.end()) {
+            string lowerW = words[i];
+            transform (lowerW.begin(), lowerW.end(), lowerW.begin(), ::tolower);
+            if (std::find(stopWords.begin(), stopWords.end(), lowerW) == stopWords.end()) {
                 map<string,int>::iterator it = m.find(words[i]);
                 if (it != m.end()) {
                     m[words[i]]++;

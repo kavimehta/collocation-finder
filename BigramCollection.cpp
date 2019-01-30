@@ -58,13 +58,19 @@ void BigramCollection::addSentence(string w, string s, bool includeClosedClass) 
             startIndex = 0;
         }
 
-        const char* args[] = {"was", "am", "has", "the", "a", "and", "be", "but", "by", "can", "such", "could", "do", "for", "have", "him", "her", "i", "is", "we", "he", "she", "it", "may", "might", "mine", "must", "need", "no", "not", "nor", "none", "our", "where", "whether", "while", "which", "you", "your", "to", "of", "on", "with", "in", "so", "or", "my", "its", "if", "his", "hers", "as", "an", "at", "this", "they", "there", "then", "that", "are", "would", "who", "whom", "them", "each", "from", "ourselves", "when", "these"};
-        vector<string> stopWords(args, args + sizeof(args)/sizeof(args[0]));
+        ifstream stopWordsFile("stopWordsList.txt");
+        vector<string> stopWords;
+        string word;
+        while (stopWordsFile >> word) {
+            stopWords.push_back(word);
+        }
 
         // Loop through the 10 surrounding words, but don't fall off the end
         // of the array
         for (int i = startIndex; (i < words.size()) && (i <= wIndex + 5); i++) {
-            if (includeClosedClass || std::find(stopWords.begin(), stopWords.end(), words[i]) == stopWords.end()) {
+            string lowerW = words[i];
+            transform (lowerW.begin(), lowerW.end(), lowerW.begin(), ::tolower);
+            if (includeClosedClass || std::find(stopWords.begin(), stopWords.end(), lowerW) == stopWords.end()) {
                 if(!(words[i] == w)) {
                     if (!containsBigram(words[i])) {
                         bigrams[words[i]] = *(new Bigram(w, words[i]));
