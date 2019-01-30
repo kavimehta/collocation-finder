@@ -58,7 +58,7 @@ void BigramCollection::addSentence(string w, string s, bool includeClosedClass) 
             startIndex = 0;
         }
 
-        ifstream stopWordsFile("stopWordsList.txt");
+        ifstream stopWordsFile("../stopWordsList.txt");
         vector<string> stopWords;
         string word;
         while (stopWordsFile >> word) {

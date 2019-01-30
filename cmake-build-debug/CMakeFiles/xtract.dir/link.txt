@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/xtract.dir/xtract.cpp.o CMakeFiles/xtract.dir/Bigram.cpp.o CMakeFiles/xtract.dir/BigramCollection.cpp.o CMakeFiles/xtract.dir/Corpus.cpp.o CMakeFiles/xtract.dir/S1Bigram.cpp.o  -o xtract 

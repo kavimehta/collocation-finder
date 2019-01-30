@@ -135,7 +135,7 @@ vector<string> Corpus::getFrequentWords(int minFrequency) {
     // Create a map
     map<string, int> m;
 
-    ifstream stopWordsFile("stopWordsList.txt");
+    ifstream stopWordsFile("../stopWordsList.txt");
     vector<string> stopWords;
     string word;
     while (stopWordsFile >> word) {
