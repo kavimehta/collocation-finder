@@ -36,26 +36,6 @@ S1Bigram.h
 Bigram.h
 /Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Bigram.h
 
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Corpus.cpp
-bits/stdc++.h
--
-iostream
--
-fstream
--
-string
--
-Corpus.h
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Corpus.h
-
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Corpus.h
-bits/stdc++.h
--
-iostream
--
-fstream
--
-
 /Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/S1Bigram.h
 bits/stdc++.h
 -

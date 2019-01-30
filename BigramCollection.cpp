@@ -166,6 +166,8 @@ void BigramCollection::stage2(double T) {
         }
     }
 
+    bool isEmptyCollocation = true;
+
     for (int i = 0; i < 10; i++) {
         bool addedWord = false;
         if (i < 5) {
@@ -187,18 +189,21 @@ void BigramCollection::stage2(double T) {
                 //double frequency = (double) tempBG.getp(pos) / (double) freqs[i];
                 ngram.push_back(tempBG.getwi());
                 addedWord = true;
+                isEmptyCollocation = false;
             }
         }
         if (!addedWord) {
             ngram.push_back("_");
         }
     }
-    for (int i = 0; i < ngram.size(); i++) {
-        string aNgram = ngram[i];
-        cout << aNgram;
-        cout << " ";
+    if (!isEmptyCollocation) {
+        for (int i = 0; i < ngram.size(); i++) {
+            string aNgram = ngram[i];
+            cout << aNgram;
+            cout << " ";
+        }
+        cout << "\n";
     }
-    cout << "\n";
 }
 
 /**
