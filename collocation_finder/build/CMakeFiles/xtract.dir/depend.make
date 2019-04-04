@@ -3,21 +3,26 @@
 
 CMakeFiles/xtract.dir/Bigram.cpp.o: ../Bigram.cpp
 CMakeFiles/xtract.dir/Bigram.cpp.o: ../Bigram.h
+CMakeFiles/xtract.dir/Bigram.cpp.o: ../stdc++.h
 
 CMakeFiles/xtract.dir/BigramCollection.cpp.o: ../Bigram.h
 CMakeFiles/xtract.dir/BigramCollection.cpp.o: ../BigramCollection.cpp
 CMakeFiles/xtract.dir/BigramCollection.cpp.o: ../BigramCollection.h
 CMakeFiles/xtract.dir/BigramCollection.cpp.o: ../S1Bigram.h
+CMakeFiles/xtract.dir/BigramCollection.cpp.o: ../stdc++.h
 
 CMakeFiles/xtract.dir/Corpus.cpp.o: ../Corpus.cpp
 CMakeFiles/xtract.dir/Corpus.cpp.o: ../Corpus.h
+CMakeFiles/xtract.dir/Corpus.cpp.o: ../stdc++.h
 
 CMakeFiles/xtract.dir/S1Bigram.cpp.o: ../S1Bigram.cpp
 CMakeFiles/xtract.dir/S1Bigram.cpp.o: ../S1Bigram.h
+CMakeFiles/xtract.dir/S1Bigram.cpp.o: ../stdc++.h
 
 CMakeFiles/xtract.dir/xtract.cpp.o: ../Bigram.h
 CMakeFiles/xtract.dir/xtract.cpp.o: ../BigramCollection.h
 CMakeFiles/xtract.dir/xtract.cpp.o: ../Corpus.h
 CMakeFiles/xtract.dir/xtract.cpp.o: ../S1Bigram.h
+CMakeFiles/xtract.dir/xtract.cpp.o: ../stdc++.h
 CMakeFiles/xtract.dir/xtract.cpp.o: ../xtract.cpp
 

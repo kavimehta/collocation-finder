@@ -18,6 +18,7 @@ set(APPLICATION_SOURCE
         BigramCollection.h
         Corpus.h
         S1Bigram.h
+        stdc++.h
         )
 
 add_executable (xtract ${APPLICATION_SOURCE})

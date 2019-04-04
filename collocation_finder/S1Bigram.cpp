@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "stdc++.h"
 #include "S1Bigram.h"
 using namespace std;
 

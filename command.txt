@@ -1,0 +1,3 @@
+ssh s349-12.cs.berkeley.edu -l cs199-fkj
+
+./xtract -source ../../texts/NP_articles_2018-2019.txt -word climate | tee NP_collocations_climate.txt; ./xtract -source ../../texts/SF_articles_2017-2019.txt -word climate | tee SF_collocations_climate.txt; ./xtract -source ../../texts/NP_articles_2018-2019.txt -word immigration | tee NP_collocations_immigration.txt; ./xtract -source ../../texts/SF_articles_2017-2019.txt -word immigration | tee SF_collocations_immigration.txt

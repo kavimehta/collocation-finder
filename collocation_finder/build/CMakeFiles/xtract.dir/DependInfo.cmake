@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Bigram.cpp" "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/CMakeFiles/xtract.dir/Bigram.cpp.o"
-  "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/BigramCollection.cpp" "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/CMakeFiles/xtract.dir/BigramCollection.cpp.o"
-  "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Corpus.cpp" "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/CMakeFiles/xtract.dir/Corpus.cpp.o"
-  "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/S1Bigram.cpp" "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/CMakeFiles/xtract.dir/S1Bigram.cpp.o"
-  "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/xtract.cpp" "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/CMakeFiles/xtract.dir/xtract.cpp.o"
+  "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Bigram.cpp" "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/CMakeFiles/xtract.dir/Bigram.cpp.o"
+  "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/BigramCollection.cpp" "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/CMakeFiles/xtract.dir/BigramCollection.cpp.o"
+  "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Corpus.cpp" "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/CMakeFiles/xtract.dir/Corpus.cpp.o"
+  "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/S1Bigram.cpp" "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/CMakeFiles/xtract.dir/S1Bigram.cpp.o"
+  "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/xtract.cpp" "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/CMakeFiles/xtract.dir/xtract.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

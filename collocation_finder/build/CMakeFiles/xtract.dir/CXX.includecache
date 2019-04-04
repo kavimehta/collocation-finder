@@ -6,37 +6,233 @@
 
 #IncludeRegexTransform: 
 
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Bigram.h
-bits/stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Bigram.cpp
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+iostream
 -
+fstream
+-
+Bigram.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Bigram.h
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Bigram.h
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
 iostream
 -
 fstream
 -
 
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/BigramCollection.cpp
-bits/stdc++.h
--
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/BigramCollection.cpp
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
 iostream
 -
 fstream
 -
 BigramCollection.h
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/BigramCollection.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/BigramCollection.h
 
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/BigramCollection.h
-bits/stdc++.h
--
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/BigramCollection.h
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
 iostream
 -
 fstream
 -
 S1Bigram.h
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/S1Bigram.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/S1Bigram.h
 Bigram.h
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/Bigram.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Bigram.h
 
-/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/S1Bigram.h
-bits/stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Corpus.cpp
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+iostream
 -
+fstream
+-
+string
+-
+Corpus.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Corpus.h
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Corpus.h
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+iostream
+-
+fstream
+-
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/S1Bigram.cpp
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+S1Bigram.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/S1Bigram.h
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/S1Bigram.h
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
+cassert
+-
+cctype
+-
+cerrno
+-
+cfloat
+-
+ciso646
+-
+climits
+-
+clocale
+-
+cmath
+-
+csetjmp
+-
+csignal
+-
+cstdarg
+-
+cstddef
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+ctime
+-
+ccomplex
+-
+cfenv
+-
+cinttypes
+-
+cstdbool
+-
+cstdint
+-
+ctgmath
+-
+cwchar
+-
+cwctype
+-
+algorithm
+-
+bitset
+-
+complex
+-
+deque
+-
+exception
+-
+fstream
+-
+functional
+-
+iomanip
+-
+ios
+-
+iosfwd
+-
+iostream
+-
+istream
+-
+iterator
+-
+limits
+-
+list
+-
+locale
+-
+map
+-
+memory
+-
+new
+-
+numeric
+-
+ostream
+-
+queue
+-
+set
+-
+sstream
+-
+stack
+-
+stdexcept
+-
+streambuf
+-
+string
+-
+typeinfo
+-
+utility
+-
+valarray
+-
+vector
+-
+array
+-
+atomic
+-
+chrono
+-
+condition_variable
+-
+forward_list
+-
+future
+-
+initializer_list
+-
+mutex
+-
+random
+-
+ratio
+-
+regex
+-
+scoped_allocator
+-
+system_error
+-
+thread
+-
+tuple
+-
+typeindex
+-
+type_traits
+-
+unordered_map
+-
+unordered_set
+-
+
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/xtract.cpp
+BigramCollection.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/BigramCollection.h
+Corpus.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/Corpus.h
+stdc++.h
+/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/stdc++.h
 

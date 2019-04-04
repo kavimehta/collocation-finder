@@ -1,4 +1,4 @@
-# Install script for directory: /Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder
+# Install script for directory: /Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/kavimehta/Other Stuff/Research/Dekai/collocations/collocation_finder/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/kavimehta/Other Stuff/Research/collocation_finder/collocation_finder/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

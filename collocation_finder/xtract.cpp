@@ -1,8 +1,8 @@
 // package jxtract;
-#include<bits/stdc++.h>
 using namespace std;
 #include "BigramCollection.h"
 #include "Corpus.h"
+#include "stdc++.h"
 
 class JXtract {
 
